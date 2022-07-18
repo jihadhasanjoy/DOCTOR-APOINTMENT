@@ -1,0 +1,47 @@
+<div *ngIf="monthItem" class="details-view">
+  <div class="row details-row">
+    <div class="col-6">
+      <div class="box-element">
+        <div class="info-name">First Name</div>
+        <div class="info-value">{{monthItem?.firstName || 'Not Available'}}</div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="box-element">
+        <div class="info-name">Last Name</div>
+        <div class="info-value">{{monthItem?.lastName || 'Not Available'}}</div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="box-element">
+        <div class="info-name">Email</div>
+        <div class="info-value">{{monthItem?.email || 'Not Available'}}</div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="box-element">
+        <div class="info-name">Gender</div>
+        <div class="info-value">{{(monthItem?.gender | titlecase) || 'Not Available'}}</div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="box-element">
+        <div class="info-name">Age</div>
+        <div class="info-value">{{monthItem?.age || 'Not Available'}}</div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="box-element">
+        <div class="info-name">Date</div>
+        <div class="info-value">{{(monthItem?.date  | date: 'medium') || 'Not Available'}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *nzModalFooter>
+  <button nz-button nzType="primary" (click)="destroyModal()">Ok</button>
+</div>

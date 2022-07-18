@@ -1,0 +1,75 @@
+<div>
+  <nz-spin [nzSpinning]="isLoadingForm">
+    <form *ngIf="validateForm" class="material-form" nz-form nzLayout="vertical" [formGroup]="validateForm">
+      <div class="form-row">
+        <nz-form-item class="col-6">
+          <nz-form-label nzRequired nzFor="firstName">First Name</nz-form-label>
+          <nz-form-control>
+            <input nz-input formControlName="firstName" id="firstName" />
+            <span class="invalid-feedback"
+              *ngIf="(validateForm.get('firstName')?.touched || validateForm.get('firstName')?.dirty) &&  validateForm.get('firstName')?.hasError('required')">
+              Please insert first name
+            </span>
+            <span class="invalid-feedback" *ngIf=" validateForm.get('firstName')?.hasError('maxlength')">
+              First name exceeds maximum limit (60)
+            </span>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="col-6">
+          <nz-form-label nzRequired nzFor="LastName">Last Name</nz-form-label>
+          <nz-form-control>
+            <input nz-input formControlName="lastName" id="LastName" />
+            <span class="invalid-feedback"
+              *ngIf="(validateForm.get('lastName')?.touched || validateForm.get('lastName')?.dirty) &&  validateForm.get('lastName')?.hasError('required')">
+              Please insert lirst name
+            </span>
+            <span class="invalid-feedback" *ngIf=" validateForm.get('lastName')?.hasError('maxlength')">
+              Lirst name exceeds maximum limit (60)
+            </span>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="col-6">
+          <nz-form-label nzFor="email">Email</nz-form-label>
+          <nz-form-control nzErrorTip="Please input valid email">
+            <input nz-input formControlName="email" id="email" />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="col-6">
+          <nz-form-label nzRequired nzFor="gender">Gender</nz-form-label>
+          <nz-form-control>
+            <nz-select formControlName="gender" uniFocusInput class="custom-select">
+              <nz-option *ngFor="let gender of genders | enumToArray" [nzValue]="gender" [nzLabel]="gender | titlecase">
+              </nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="col-6">
+          <nz-form-label nzFor="age">Age</nz-form-label>
+          <nz-form-control>
+            <nz-input-number [nzMin]="1" style="width: 100%" nz-input formControlName="age" id="age"></nz-input-number>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item class="col-6">
+          <nz-form-label nzFor="date">Date</nz-form-label>
+          <nz-form-control [nzErrorTip]="'Please select date'">
+            <nz-date-picker [nzAllowClear]="false" style="width: 100%" formControlName="date"></nz-date-picker>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item class="col-6">
+          <nz-form-label nzFor="time">Time</nz-form-label>
+          <nz-form-control [nzErrorTip]="'Please select time'">
+            <nz-time-picker style="width: 100%" [nzUse12Hours]="true" formControlName="time">
+            </nz-time-picker>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+    </form>
+  </nz-spin>
+</div>
+<div *nzModalFooter>
+  <button nz-button nzType="default" [disabled]="isLoadingForm" (click)="destroyModal()">Cancel</button>
+  <button nz-button nzType="primary" [nzLoading]="isLoadingForm" (click)="onCreateNewAppoinment()">Create</button>
+</div>

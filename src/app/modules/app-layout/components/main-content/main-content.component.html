@@ -1,0 +1,24 @@
+<div class="main-calender px-3 mb-4">
+  <div class="content-header py-3 d-flex justify-content-end">
+    <nz-select (ngModelChange)="onWeekNameChange($event)" class="nz-custom-selection" nzShowSearch
+      nzPlaceHolder="Please select month" [(ngModel)]="selectedMonth">
+      <nz-option *ngFor="let monthName of allMonthNames | enumToArray" [nzLabel]="monthName"
+        [nzValue]="allMonthKeyNames[monthName]"></nz-option>
+    </nz-select>
+    <button class="ml-3" nz-button nzType="primary" (click)="onCreateNewApoinment()">Create Appoinment</button>
+  </div>
+
+  <nz-calendar *ngIf="selectedDate" class="nz-calender-custom" [(ngModel)]="selectedDate"
+    (nzSelectChange)="onDateselectChange($event)">
+    >
+    <ng-container *nzDateCell="let date">
+      <ng-container *ngFor="let item of selectedMonthInfo | keys">
+        <ng-container *ngIf="item.key == date.getDate() && selectedMonth == (date.getMonth() + 1)">
+          <div (click)="onViewApoinmentDetails(value)" *ngFor="let value of item.value" class="calender-item">
+            <p>{{value.firstName}}</p>
+          </div>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </nz-calendar>
+</div>

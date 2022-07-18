@@ -1,0 +1,7 @@
+{
+    "files.autoSave": "afterDelay",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.tslint": true,
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+}

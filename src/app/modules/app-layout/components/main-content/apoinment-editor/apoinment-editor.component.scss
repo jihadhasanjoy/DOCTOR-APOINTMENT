@@ -1,0 +1,16 @@
+.material-form {
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+    & > nz-form-item {
+      padding-right: 5px;
+      padding-left: 5px;
+    }
+  }
+}
+
+.invalid-feedback {
+  color: #ff4d4f !important;
+}

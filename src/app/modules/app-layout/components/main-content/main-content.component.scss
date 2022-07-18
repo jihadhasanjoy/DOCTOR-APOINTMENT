@@ -1,0 +1,28 @@
+::ng-deep {
+  nz-calendar-header,
+  .ant-fullcalendar-header {
+    display: none !important;
+  }
+  .nz-custom-selection {
+    min-width: 100px !important;
+  }
+  .ant-picker-cell {
+    cursor: default;
+  }
+}
+.main-calender {
+  max-height: calc(100vh - 131px);
+  padding-left: 1rem !important;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.calender-item {
+  cursor: pointer;
+  padding: 2px 2px 0px;
+  font-weight: bold;
+  margin-bottom: 2px;
+  :hover {
+    background-color: gainsboro;
+  }
+}

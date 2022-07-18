@@ -37,8 +37,10 @@ export class MainContentComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.paramsId = this.route.snapshot.params['id'];
+
     if (this.paramsId && !this.isFoundMonthRange()) {
       this.navigate.toNotFoundPage();
+      return;
     }
     this.selectedMonth = this.paramsId
       ? Number(this.paramsId)
